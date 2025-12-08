@@ -19,6 +19,7 @@
   box-shadow: 0 40px 80px rgba(0,0,0,0.12);
 }
 
+/* TEXT */
 .hero-text h1 {
   font-size: 48px;
   line-height: 1.15;
@@ -42,6 +43,7 @@
   font-weight: 600;
 }
 
+/* BUTTONS */
 .hero-actions {
   margin-top: 28px;
   display: flex;
@@ -68,6 +70,7 @@
   cursor: pointer;
 }
 
+/* IMAGE */
 .hero-image {
   display: flex;
   align-items: center;
@@ -80,41 +83,25 @@
   background: linear-gradient(135deg, #7dcfb6, #fbd1a2);
   padding: 20px;
 }
-/* -------- MICRO INTERACTIONS -------- */
 
-.hero-card,
-.product-card,
-.cart-card,
-.about-card,
-.contact-card {
+/* ANIMATIONS */
+.hero-card {
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.hero-card:hover,
-.product-card:hover,
-.cart-card:hover,
-.about-card:hover,
-.contact-card:hover {
+.hero-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.15);
 }
 
-/* Button ripple-like hover */
-.primary-btn,
-.btn-primary,
-.checkout,
-.nav-btn {
+.primary-btn {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.primary-btn:hover,
-.btn-primary:hover,
-.checkout:hover,
-.nav-btn:hover {
+.primary-btn:hover {
   transform: scale(1.05);
 }
 
-/* Smooth page fade-in */
 section {
   animation: fadeUp 0.6s ease forwards;
 }

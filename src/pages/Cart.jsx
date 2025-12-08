@@ -13,11 +13,18 @@ export default function Cart() {
       {cart.map((item) => (
         <div className="cart-card" key={item.id}>
           <img src={item.image} alt={item.name} />
-          <div>
+
+          <div className="cart-info">
             <h3>{item.name}</h3>
             <p>₹{item.price} × {item.qty}</p>
           </div>
-          <button onClick={() => removeFromCart(item.id)}>✕</button>
+
+          <button
+            className="remove"
+            onClick={() => removeFromCart(item.id)}
+          >
+            ✕
+          </button>
         </div>
       ))}
     </section>

@@ -7,14 +7,18 @@ export default function Shop() {
 
   return (
     <section className="shop">
-      <h1 className="shop-title">Our Best Toys</h1>
+      <h1 className="shop-heading">Our Best Toys</h1>
 
       <div className="product-grid">
         {products.map((product) => (
           <div className="product-card" key={product.id}>
-            <img src={product.image} alt={product.name} />
+            <div className="img-wrap">
+              <img src={product.image} alt={product.name} />
+            </div>
+
             <h3>{product.name}</h3>
-            <p>₹{product.price}</p>
+            <p className="price">₹{product.price}</p>
+
             <button onClick={() => addToCart(product)}>
               Add to Cart
             </button>
