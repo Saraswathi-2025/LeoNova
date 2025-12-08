@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/Home.css";
 
 export default function Home() {
@@ -17,13 +18,18 @@ export default function Home() {
           </p>
 
           <div className="hero-actions">
-            <button className="primary-btn">Shop Toys</button>
-            <button className="secondary-btn">Learn More</button>
+            <Link to="/shop" className="primary-btn">
+              Shop Toys
+            </Link>
+
+            <Link to="/about" className="secondary-btn">
+              Learn More
+            </Link>
           </div>
         </div>
 
         <div className="hero-image">
-          <img src="./products/1.png" alt="Toy" />
+          <img src="/products/1.png" alt="Toy" />
         </div>
       </div>
     </section>

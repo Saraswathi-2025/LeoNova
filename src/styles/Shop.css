@@ -76,3 +76,8 @@
   background: #ff8c42;
   transform: scale(1.08);
 }
+.product-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
