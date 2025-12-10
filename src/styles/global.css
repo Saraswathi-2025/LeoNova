@@ -1,0 +1,152 @@
+:root {
+  /* Brand Colors */
+  --brand-orange: #f79256;
+  --brand-green: #7dcfb6;
+  --soft-bg: #f9f8f3;
+  --text-dark: #2f3020;
+  --text-muted: #555;
+
+  /* Shadows */
+  --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 40px 90px rgba(0, 0, 0, 0.15);
+
+  /* Radius */
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base typography */
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text-dark);
+  background-color: white;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+/* Links & buttons */
+a, button {
+  font-family: inherit;
+}
+/* App background */
+.app-bg {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(247, 146, 86, 0.18),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(125, 207, 182, 0.25),
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #fefcf9,
+      #eef7f3
+    );
+}
+/* ---------- PREMIUM GLOBAL CARD STYLE ---------- */
+
+.premium-card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.03),
+    0 12px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.08),
+    0 24px 48px rgba(0, 0, 0, 0.12);
+}
+/* ---------- GLOBAL TYPOGRAPHY ---------- */
+
+* {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  color: #1f2937; /* soft black */
+  line-height: 1.6;
+}
+
+/* Headings */
+h1 {
+  font-size: 3rem;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Paragraphs */
+p {
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+/* Buttons */
+button, a {
+  font-weight: 500;
+}
+section {
+  padding: 96px 20px;
+}
+/* ---------- WORLD-CLASS MOTION ---------- */
+
+/* Page fade-in */
+.page-enter {
+  animation: pageFade 0.5s cubic-bezier(.22,.61,.36,1) both;
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Natural hover easing */
+.premium-card,
+.btn,
+a {
+  transition:
+    transform 0.25s cubic-bezier(.22,.61,.36,1),
+    box-shadow 0.25s cubic-bezier(.22,.61,.36,1),
+    background-color 0.25s ease;
+}
+button:active,
+a:active {
+  transform: scale(0.97);
+}

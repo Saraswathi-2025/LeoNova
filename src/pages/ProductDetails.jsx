@@ -1,37 +1,46 @@
 import { useParams } from "react-router-dom";
-import { useCart } from "../context/CartContext";
 import products from "../data/products";
+import { useCart } from "../context/CartContext";
 import "../styles/ProductDetails.css";
 
 export default function ProductDetails() {
   const { id } = useParams();
   const { addToCart } = useCart();
 
-  const product = products.find(
-    (item) => item.id === Number(id)
-  );
+  const product = products.find((p) => p.id === Number(id));
 
   if (!product) {
-    return <h2 style={{ padding: "40px" }}>Product not found</h2>;
+    return <p className="not-found">Product not found.</p>;
   }
 
   return (
     <section className="product-details">
-      <div className="product-image">
-        <img src={product.image} alt={product.name} />
-      </div>
+      <div className="details-card">
+        <div className="details-image">
+          <img src={product.image} alt={product.name} />
+        </div>
 
-      <div className="product-info">
-        <h1>{product.name}</h1>
-        <p className="price">₹{product.price}</p>
-        <p className="desc">
-          High quality toy designed for safety, fun, and creativity.
-          Perfect for kids and gifting.
-        </p>
+        <div className="details-info">
+          <h1>{product.name}</h1>
 
-        <button onClick={() => addToCart(product)}>
-          Add to Cart
-        </button>
+          <p className="category">
+            {product.category} • Age {product.age}
+          </p>
+
+          <p className="details-price">₹{product.price}</p>
+
+          <p className="description">
+            Carefully designed toy to inspire creativity, joy, and learning.
+            Made with safe, child-friendly materials.
+          </p>
+
+          <button
+            className="btn-primary"
+            onClick={() => addToCart(product)}
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </section>
   );
