@@ -30,7 +30,55 @@ const products = [
     image: "/LeoNova/products/4.png",
     category: "Educational",
     age: "4+",
-  }
+  },
+  {
+    id: 5,
+    name: "Toy Train Set",
+    price: 899,
+    image: "/LeoNova/products/5.png",
+    category: "Learning Toys",
+    age: "5+",
+  },
+  {
+    id: 6,
+    name: "Toy Train Set",
+    price: 899,
+    image: "/LeoNova/products/6.png",
+    category: "Learning Toys",
+    age: "5+",
+  },
+  {
+    id: 7,
+    name: "Toy Train Set",
+    price: 899,
+    image: "/LeoNova/products/7.png",
+    category: "Learning Toys",
+    age: "5+",
+  },
+  {
+    id: 8,
+    name: "Toy Train Set",
+    price: 899,
+    image: "/LeoNova/products/8.png",
+    category: "Learning Toys",
+    age: "5+",
+  },
+  {
+    id: 9,
+    name: "Toy Train Set",
+    price: 899,
+    image: "/LeoNova/products/9.png",
+    category: "Learning Toys",
+    age: "5+",
+  },
+  {
+    id: 10,
+    name: "Toy Train Set",
+    price: 899,
+    image: "/LeoNova/products/10.png",
+    category: "Learning Toys",
+    age: "5+",
+  },
 ];
 
 export default products;

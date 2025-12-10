@@ -1,0 +1,105 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --ln-bg: linear-gradient(135deg, #fbd1a2, #7dcfb6);
+  --ln-card-radius: 32px;
+  --ln-card-shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
+  --ln-card-shadow-hover: 0 36px 90px rgba(15, 23, 42, 0.18);
+  --ln-primary: #f79256;
+  --ln-primary-soft: rgba(247, 146, 86, 0.2);
+  --ln-text-main: #111827;
+  --ln-text-muted: #6b7280;
+  --ln-border-subtle: rgba(148, 163, 184, 0.3);
+  --ln-radius-sm: 14px;
+  --ln-radius-lg: 24px;
+  --ln-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Poppins",
+    sans-serif;
+  color: var(--ln-text-main);
+  background: var(--ln-bg);
+}
+
+a {
+  color: inherit;
+}
+
+.app-main {
+  min-height: 100vh;
+}
+
+/* shared premium card */
+.card {
+  background: #ffffff;
+  border-radius: var(--ln-card-radius);
+  box-shadow: var(--ln-card-shadow);
+  transition:
+    transform 0.25s var(--ln-ease),
+    box-shadow 0.25s var(--ln-ease),
+    border-color 0.25s var(--ln-ease);
+  border: 1px solid transparent;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--ln-card-shadow-hover);
+  border-color: var(--ln-primary-soft);
+}
+
+/* shared buttons */
+.btn {
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 22px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition:
+    transform 0.2s var(--ln-ease),
+    box-shadow 0.2s var(--ln-ease),
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--ln-primary);
+  color: white;
+  box-shadow: 0 12px 30px rgba(247, 146, 86, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px rgba(247, 146, 86, 0.5);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ln-text-main);
+  border: 1.5px solid var(--ln-border-subtle);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mt-8 {
+  margin-top: 8px;
+}
