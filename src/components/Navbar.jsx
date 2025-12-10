@@ -5,10 +5,20 @@ import "../styles/Navbar.css";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
+
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Close mobile menu when route changes
+  // Menu items in ONE place
+  const menuItems = [
+    { label: "Home", to: "/" },
+    { label: "Shop", to: "/shop" },
+    { label: "About", to: "/about" },
+    { label: "Contact", to: "/contact" },
+    { label: "Cart", to: "/cart" },
+  ];
+
+  // Close mobile menu when navigation changes
   useEffect(() => {
     setOpen(false);
   }, [location.pathname]);
@@ -16,22 +26,22 @@ export default function Navbar() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const q = search.trim();
-    if (q) {
-      navigate(`/shop?q=${encodeURIComponent(q)}`);
-    } else {
-      navigate("/shop");
-    }
+
+    if (q) navigate(`/shop?q=${encodeURIComponent(q)}`);
+    else navigate("/shop");
+
+    // Clear search text after submit
+    setSearch("");
   };
 
   return (
     <header className="navbar">
-      <div className="nav-left">
-        <Link to="/" className="logo">
-          LeoNova
-        </Link>
-      </div>
+      {/* LEFT: LOGO */}
+      <Link to="/" className="logo">
+        LeoNova
+      </Link>
 
-      {/* search - always visible */}
+      {/* CENTER: SEARCH BAR */}
       <form className="nav-search" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -41,43 +51,40 @@ export default function Navbar() {
         />
       </form>
 
-      {/* desktop links */}
+      {/* RIGHT: DESKTOP LINKS */}
       <nav className="nav-links desktop-only">
-        <Link to="/">Home</Link>
-        <Link to="/shop">Shop</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/cart">Cart</Link>
+        {menuItems.map((item) => (
+          <Link key={item.to} to={item.to}>
+            {item.label}
+          </Link>
+        ))}
       </nav>
 
+      {/* CTA BUTTON DESKTOP */}
       <button
         className="nav-cta desktop-only"
-        type="button"
         onClick={() => navigate("/shop")}
       >
         Shop Now
       </button>
 
-      {/* mobile hamburger */}
+      {/* MOBILE HAMBURGER */}
       <button
         className="hamburger mobile-only"
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-label="Toggle navigation"
+        onClick={() => setOpen(!open)}
+        aria-label="Toggle Navigation"
       >
         ☰
       </button>
 
-      {/* mobile menu */}
-      {open && (
-        <nav className="nav-links-mobile mobile-only">
-          <Link to="/">Home</Link>
-          <Link to="/shop">Shop</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/cart">Cart</Link>
-        </nav>
-      )}
+      {/* MOBILE SLIDE-IN MENU */}
+      <nav className={`nav-mobile ${open ? "open" : ""}`}>
+        {menuItems.map((item) => (
+          <Link key={item.to} to={item.to}>
+            {item.label}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 }
