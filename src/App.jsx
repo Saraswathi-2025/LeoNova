@@ -8,10 +8,16 @@ import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 import Checkout from "./pages/Checkout";
 import Footer from "./components/Footer";
+import Toast from "./components/Toast";
+import { useCart } from "./context/CartContext";
+
 export default function App() {
+  const { toast } = useCart();
+
   return (
     <div className="app-shell">
       <Navbar />
+      <Toast message={toast} />
 
       <main className="page-shell">
         <Routes>
@@ -22,10 +28,11 @@ export default function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-
-          {/* any wrong URL → go home */}
+          
+          {/* wrong URL → redirect */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+
         <Footer />
       </main>
     </div>

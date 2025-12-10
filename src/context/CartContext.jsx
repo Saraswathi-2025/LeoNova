@@ -4,6 +4,12 @@ const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [toast, setToast] = useState("");
+
+  const showToast = (msg) => {
+    setToast(msg);
+    setTimeout(() => setToast(""), 2000);
+  };
 
   const addToCart = (product) => {
     setCart((prev) => {
@@ -15,6 +21,8 @@ export function CartProvider({ children }) {
       }
       return [...prev, { ...product, qty: 1 }];
     });
+
+    showToast("🛒 Added to cart");
   };
 
   const updateQty = (id, delta) => {
@@ -31,10 +39,15 @@ export function CartProvider({ children }) {
 
   const removeFromCart = (id) => {
     setCart((prev) => prev.filter((p) => p.id !== id));
+    showToast("❌ Removed from cart");
   };
 
-  const clearCart = () => setCart([]);
+  const clearCart = () => {
+    setCart([]);
+    showToast("Cart cleared");
+  };
 
+  // total amount
   const total = cart.reduce(
     (sum, item) => sum + item.price * item.qty,
     0
@@ -42,7 +55,15 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, updateQty, removeFromCart, clearCart, total }}
+      value={{
+        cart,
+        addToCart,
+        updateQty,
+        removeFromCart,
+        clearCart,
+        total,
+        toast,
+      }}
     >
       {children}
     </CartContext.Provider>
