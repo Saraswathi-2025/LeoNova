@@ -76,6 +76,7 @@ export default function Navbar() {
       >
         ☰
       </button>
+      <Link to="/admin-login">Admin</Link>
 
       {/* MOBILE SLIDE-IN MENU */}
       <nav className={`nav-mobile ${open ? "open" : ""}`}>

@@ -1,0 +1,89 @@
+/* Page Layout */
+.admin-page {
+  min-height: 100vh;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #e0f2fe, #fde7d9);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Card container */
+.admin-card {
+  width: 100%;
+  max-width: 650px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  padding: 32px 40px;
+  border-radius: 26px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+  animation: fadeUp 0.6s ease;
+}
+
+/* Title */
+.admin-card h1 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+/* Messages List */
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Each message box */
+.message-box {
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  border-left: 6px solid #fb923c;
+  transition: 0.3s ease;
+}
+
+.message-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+/* Message fields */
+.msg-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.msg-email {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.msg-text {
+  font-size: 15px;
+  color: #374151;
+}
+
+/* Fade animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Empty state */
+.no-messages {
+  text-align: center;
+  font-size: 16px;
+  color: #6b7280;
+  padding: 30px 0;
+}
