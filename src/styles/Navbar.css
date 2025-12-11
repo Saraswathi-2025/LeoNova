@@ -1,5 +1,5 @@
 /* ==========================================
-   NAVBAR — PREMIUM RESPONSIVE DESIGN
+   NAVBAR — PREMIUM MODERN STYLE
 ========================================== */
 
 .navbar {
@@ -25,8 +25,8 @@
 .logo {
   font-size: 22px;
   font-weight: 700;
-  text-decoration: none;
   color: #1f224f;
+  text-decoration: none;
 }
 
 /* SEARCH */
@@ -42,6 +42,8 @@
   border: 1px solid rgba(148,163,184,0.45);
   background: rgba(255,255,255,0.7);
   font-size: 14px;
+  outline: none;
+  transition: border-color 0.25s ease;
 }
 
 .nav-search input:focus {
@@ -55,19 +57,20 @@
 }
 
 .nav-links a {
-  text-decoration: none;
-  color: #333;
   position: relative;
   font-size: 14px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
 }
 
 .nav-links a::after {
   content: "";
   position: absolute;
-  bottom: -4px;
   left: 0;
-  width: 0%;
+  bottom: -5px;
   height: 2px;
+  width: 0%;
   background: var(--brand-orange);
   transition: width 0.25s ease;
 }
@@ -76,7 +79,7 @@
   width: 100%;
 }
 
-/* DESKTOP CTA */
+/* CTA BUTTON */
 .nav-cta {
   background: var(--brand-orange);
   color: white;
@@ -85,24 +88,29 @@
   border: none;
   font-weight: 600;
   cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* HAMBURGER */
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(247,146,86,0.35);
+}
+
+/* MOBILE ICON */
 .hamburger {
   display: none;
-  font-size: 28px;
+  font-size: 26px;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-/* MOBILE MENU (JSX uses .nav-mobile) */
+/* MOBILE MENU */
 .nav-mobile {
   position: absolute;
-  top: 70px;
+  top: 68px;
   left: 50%;
   transform: translateX(-50%) translateY(-20px);
-
   width: 88%;
   padding: 20px;
 
@@ -121,7 +129,6 @@
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-/* MOBILE MENU ACTIVE */
 .nav-mobile.open {
   opacity: 1;
   pointer-events: auto;
@@ -129,13 +136,12 @@
 }
 
 .nav-mobile a {
-  font-size: 16px;
   text-decoration: none;
+  font-size: 16px;
   padding: 6px 0;
-  color: #333;
 }
 
-/* RESPONSIVE */
+/* DESKTOP / MOBILE CONTROL */
 .desktop-only {
   display: flex;
 }
@@ -144,11 +150,18 @@
   display: none;
 }
 
-/* MOBILE LAYOUT FIX */
+/* ==========================================
+   RESPONSIVE — MOBILE FIXED HEADER
+   LOGO + SEARCH + HAMBURGER IN ONE ROW
+========================================== */
+
 @media (max-width: 768px) {
+
+  /* Turn navbar into 1-row grid */
   .navbar {
     grid-template-columns: auto 1fr auto;
-    padding: 14px 16px;
+    gap: 10px;
+    padding: 12px 14px;
   }
 
   .desktop-only {
@@ -159,8 +172,14 @@
     display: block;
   }
 
+  /* Keep search full width */
   .nav-search {
-    grid-column: 1 / -1;
-    margin-top: 10px;
+    width: 100%;
+  }
+
+  /* Keep hamburger in same line */
+  .hamburger {
+    display: block;
+    justify-self: end;
   }
 }
