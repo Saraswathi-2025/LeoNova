@@ -14,10 +14,19 @@ export default function Cart() {
     <section className="cart">
       <h1>Your Cart</h1>
 
+      {/* EMPTY CART */}
       {cart.length === 0 ? (
-        <div className="cart-card premium-card">
-          <p>Your cart is empty.</p>
-          <Link to="/shop" className="btn btn-primary">
+        <div className="cart-empty">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png"
+            alt="Empty Cart"
+            className="empty-icon"
+          />
+
+          <h2>Your Cart is Empty</h2>
+          <p>Add some toys and make your kid smile!</p>
+
+          <Link to="/shop" className="browse-btn">
             Browse Toys
           </Link>
         </div>
@@ -25,7 +34,7 @@ export default function Cart() {
         <div className="cart-layout">
           <div className="cart-items">
             {cart.map((item) => (
-              <div className="cart-card card" key={item.id}>
+              <div className="cart-card" key={item.id}>
                 <div className="cart-img">
                   <img src={item.image} alt={item.name} />
                 </div>
@@ -35,17 +44,11 @@ export default function Cart() {
                   <p className="price">₹{item.price}</p>
 
                   <div className="quantity">
-                    <button
-                      type="button"
-                      onClick={() => updateQty(item.id, -1)}
-                    >
+                    <button type="button" onClick={() => updateQty(item.id, -1)}>
                       −
                     </button>
                     <span>{item.qty}</span>
-                    <button
-                      type="button"
-                      onClick={() => updateQty(item.id, 1)}
-                    >
+                    <button type="button" onClick={() => updateQty(item.id, 1)}>
                       +
                     </button>
                   </div>
@@ -62,17 +65,20 @@ export default function Cart() {
             ))}
           </div>
 
-          <aside className="cart-summary card">
+          {/* ORDER SUMMARY */}
+          <aside className="cart-summary">
             <h2>Order Summary</h2>
+
             <p className="summary-row">
               Items <span>{cart.length}</span>
             </p>
+
             <p className="summary-row total-row">
               Total <span>₹{total}</span>
             </p>
 
             <button
-              className="btn btn-primary full-width"
+              className="btn-primary full-width"
               type="button"
               onClick={handleCheckout}
             >
@@ -80,7 +86,7 @@ export default function Cart() {
             </button>
 
             <button
-              className="btn btn-ghost full-width mt-8"
+              className="btn-ghost full-width mt-8"
               type="button"
               onClick={clearCart}
             >
