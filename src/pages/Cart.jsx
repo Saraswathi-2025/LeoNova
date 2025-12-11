@@ -14,11 +14,10 @@ export default function Cart() {
     <section className="cart">
       <h1>Your Cart</h1>
 
-      {/* EMPTY CART */}
       {cart.length === 0 ? (
         <div className="cart-empty">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png"
+            src="https://cdn-icons-png.flaticon.com/512/891/891407.png"
             alt="Empty Cart"
             className="empty-icon"
           />
@@ -32,6 +31,7 @@ export default function Cart() {
         </div>
       ) : (
         <div className="cart-layout">
+
           <div className="cart-items">
             {cart.map((item) => (
               <div className="cart-card" key={item.id}>
@@ -44,19 +44,14 @@ export default function Cart() {
                   <p className="price">₹{item.price}</p>
 
                   <div className="quantity">
-                    <button type="button" onClick={() => updateQty(item.id, -1)}>
-                      −
-                    </button>
+                    <button onClick={() => updateQty(item.id, -1)}>−</button>
                     <span>{item.qty}</span>
-                    <button type="button" onClick={() => updateQty(item.id, 1)}>
-                      +
-                    </button>
+                    <button onClick={() => updateQty(item.id, 1)}>+</button>
                   </div>
                 </div>
 
                 <button
                   className="remove"
-                  type="button"
                   onClick={() => removeFromCart(item.id)}
                 >
                   ✕
@@ -65,7 +60,6 @@ export default function Cart() {
             ))}
           </div>
 
-          {/* ORDER SUMMARY */}
           <aside className="cart-summary">
             <h2>Order Summary</h2>
 
@@ -78,21 +72,20 @@ export default function Cart() {
             </p>
 
             <button
-              className="btn-primary full-width"
-              type="button"
+              className="btn btn-primary full-width"
               onClick={handleCheckout}
             >
               Place Order
             </button>
 
             <button
-              className="btn-ghost full-width mt-8"
-              type="button"
+              className="btn btn-ghost full-width mt-8"
               onClick={clearCart}
             >
               Clear Cart
             </button>
           </aside>
+
         </div>
       )}
     </section>

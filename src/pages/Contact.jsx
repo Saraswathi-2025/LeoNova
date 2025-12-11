@@ -2,26 +2,33 @@ import "../styles/Contact.css";
 
 export default function Contact() {
   return (
-    <section className="contact">
-      <div className="contact-card card">
+    <section className="contact-page">
+
+      <div className="contact-card">
         <h1>Contact Us</h1>
 
-        <form
-          className="contact-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            alert("Thanks for your message! (Demo only)");
-          }}
-        >
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Email Address" required />
-          <textarea placeholder="Message" required></textarea>
+        <form className="contact-form">
+          <div className="input-group">
+            <input type="text" required />
+            <label>Your Name</label>
+          </div>
 
-          <button className="btn btn-primary" type="submit">
+          <div className="input-group">
+            <input type="email" required />
+            <label>Email Address</label>
+          </div>
+
+          <div className="input-group textarea-group">
+            <textarea required></textarea>
+            <label>Message</label>
+          </div>
+
+          <button className="btn-submit" type="submit">
             Send Message
           </button>
         </form>
       </div>
+
     </section>
   );
 }
