@@ -1,7 +1,9 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminLogin() {
+  const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
 
   const login = async () => {
@@ -9,17 +11,17 @@ export default function AdminLogin() {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // 🚨 ALLOW ONLY YOUR ADMIN EMAIL
-      const allowedAdminEmail = "poorvi162025@gmail.com"; // ← CHANGE THIS
+      // ✅ ALLOW ONLY ADMIN EMAIL
+      const allowedAdminEmail = "poorvi162025@gmail.com"; // your admin email
 
       if (user.email !== allowedAdminEmail) {
         alert("Access denied. You are not an admin.");
-        auth.signOut();
+        await auth.signOut();
         return;
       }
 
-      // Redirect to admin page
-      window.location.href = "/admin";
+      // ✅ CORRECT REDIRECT (HashRouter safe)
+      navigate("/admin");
     } catch (error) {
       console.error(error);
       alert("Login failed.");
@@ -37,7 +39,9 @@ export default function AdminLogin() {
         flexDirection: "column",
       }}
     >
-      <h1 style={{ marginBottom: "20px", fontSize: "28px" }}>Admin Login</h1>
+      <h1 style={{ marginBottom: "20px", fontSize: "28px" }}>
+        Admin Login
+      </h1>
 
       <button
         onClick={login}

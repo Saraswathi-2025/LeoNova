@@ -9,73 +9,89 @@ export default function Admin() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔐 AUTH + ADMIN CHECK (ONCE)
+  // 🔐 AUTH + ADMIN CHECK (HASH ROUTER SAFE)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "/admin-login";
+        window.location.replace("#/admin-login");
         return;
       }
 
       if (!adminEmails.includes(user.email)) {
         alert("Access denied. You are not an admin.");
-        auth.signOut();
-        window.location.href = "/admin-login";
+        auth.signOut().then(() => {
+          window.location.replace("#/admin-login");
+        });
       }
     });
 
     return () => unsubscribe();
   }, []);
 
-  // 🔥 FETCH MESSAGES
+  // 📩 LOAD MESSAGES
   useEffect(() => {
     async function loadMessages() {
-      const snap = await getDocs(collection(db, "messages"));
-      const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      const snapshot = await getDocs(collection(db, "messages"));
+      const data = snapshot.docs.map((d) => ({
+        id: d.id,
+        ...d.data(),
+      }));
+
       setMessages(data);
       setLoading(false);
     }
+
     loadMessages();
   }, []);
 
+  // ❌ DELETE MESSAGE
   async function deleteMessage(id) {
     await deleteDoc(doc(db, "messages", id));
-    setMessages(prev => prev.filter(m => m.id !== id));
+    setMessages((prev) => prev.filter((m) => m.id !== id));
   }
 
-  if (loading) return <p className="admin-loading">Loading...</p>;
+  if (loading) {
+    return <p className="admin-loading">Loading...</p>;
+  }
 
   return (
-    <div className="admin-page">
+    <section className="admin-page">
+      {/* LOGOUT */}
       <button
         className="admin-logout"
-        onClick={() => auth.signOut().then(() => window.location.href = "/admin-login")}
+        onClick={() => {
+          auth.signOut().then(() => {
+            window.location.replace("#/admin-login");
+          });
+        }}
       >
         Logout
       </button>
 
-      <h1 className="admin-title">Admin — Messages</h1>
-
       <div className="admin-card">
-        {messages.length === 0 ? (
-          <p className="admin-empty">No messages yet.</p>
-        ) : (
-          messages.map(msg => (
-            <div className="admin-message" key={msg.id}>
-              <strong>{msg.name}</strong>
-              <p className="admin-email">{msg.email}</p>
-              <p>{msg.message}</p>
+        <h1>Admin — Messages</h1>
 
-              <button
-                className="admin-delete"
-                onClick={() => deleteMessage(msg.id)}
-              >
-                Delete
-              </button>
-            </div>
-          ))
+        {messages.length === 0 ? (
+          <p className="no-messages">No messages yet.</p>
+        ) : (
+          <div className="message-list">
+            {messages.map((msg) => (
+              <div className="message-box" key={msg.id}>
+                <div className="msg-name">{msg.name}</div>
+                <div className="msg-email">{msg.email}</div>
+                <div className="msg-text">{msg.message}</div>
+
+                <button
+                  className="admin-delete"
+                  onClick={() => deleteMessage(msg.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+          </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

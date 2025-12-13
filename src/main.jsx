@@ -5,7 +5,7 @@ import { HashRouter } from "react-router-dom";
 import App from "./App";
 import { CartProvider } from "./context/CartContext";
 
-// LOAD ONLY ONE GLOBAL STYLE ENTRY
+// Global styles (import ONLY once)
 import "./styles/global.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
