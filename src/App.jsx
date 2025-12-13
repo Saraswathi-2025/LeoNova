@@ -1,20 +1,21 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Toast from "./components/Toast";
 
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
-import Checkout from "./pages/Checkout";
-
-import Footer from "./components/Footer";
-import Toast from "./components/Toast";
-import { useCart } from "./context/CartContext";
 
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
+
+import { useCart } from "./context/CartContext";
 
 export default function App() {
   const { toast } = useCart();
@@ -26,6 +27,7 @@ export default function App() {
 
       <main className="page-shell">
         <Routes>
+          {/* Public pages */}
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<ProductDetails />} />
@@ -34,17 +36,16 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
 
-          {/* Admin Routes */}
-          <Route path="/admin" element={<Admin />} />
+          {/* Admin system */}
           <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin" element={<Admin />} />
 
-          {/* Redirect all invalid URLs */}
+          {/* Redirect invalid pages */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </main>
 
-      {/* Footer must be OUTSIDE the <main> */}
-      <Footer />
+        <Footer />
+      </main>
     </div>
   );
 }

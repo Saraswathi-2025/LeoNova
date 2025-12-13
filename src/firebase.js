@@ -1,25 +1,30 @@
-// Import Firebase core
 import { initializeApp } from "firebase/app";
-
-// Import Firestore
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// Import Auth
-import { getAuth } from "firebase/auth";
-
-// Your Firebase config
+// 🔥 Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCEA009y8NvtSnVcUnbzy3PScoT2Rp2c_0",
   authDomain: "leonova-d21f1.firebaseapp.com",
   projectId: "leonova-d21f1",
-  storageBucket: "leonova-d21f1.firebasestorage.app",
+  storageBucket: "leonova-d21f1.appspot.com",
   messagingSenderId: "744375937924",
-  appId: "1:744375937924:web:fd9fb71685dd33ad52cbd1"
+  appId: "1:744375937924:web:fd9fb71685dd33ad52cbd1",
 };
 
-// Initialize Firebase
+// 🔥 Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Export Firestore + Auth
-export const db = getFirestore(app);
+// 🔐 Authentication
 export const auth = getAuth(app);
+export const googleProvider = new GoogleAuthProvider();
+
+// 🗄 Firestore
+export const db = getFirestore(app);
+
+// 🛡 Admin allow-list (frontend protection)
+export const adminEmails = Object.freeze([
+  "poorvi162025@gmail.com",
+]);
+
+export default app;

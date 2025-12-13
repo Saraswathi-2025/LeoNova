@@ -6,9 +6,19 @@ export default function AdminLogin() {
 
   const login = async () => {
     try {
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
 
-      // Redirect to admin messages page
+      // 🚨 ALLOW ONLY YOUR ADMIN EMAIL
+      const allowedAdminEmail = "poorvi162025@gmail.com"; // ← CHANGE THIS
+
+      if (user.email !== allowedAdminEmail) {
+        alert("Access denied. You are not an admin.");
+        auth.signOut();
+        return;
+      }
+
+      // Redirect to admin page
       window.location.href = "/admin";
     } catch (error) {
       console.error(error);
@@ -39,7 +49,7 @@ export default function AdminLogin() {
           background: "#fb923c",
           color: "white",
           cursor: "pointer",
-          boxShadow: "0 6px 14px rgba(0,0,0,0.2)"
+          boxShadow: "0 6px 14px rgba(0,0,0,0.2)",
         }}
       >
         Login with Google
