@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Admin entry via logo */}
           <Link to="/admin-login" className="footer-logo-link">
             <img
-              src="/logo.png"
+              src="./logo.png"
               alt="LeoNova Admin Login"
               className="footer-logo"
             />

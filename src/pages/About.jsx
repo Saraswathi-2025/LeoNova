@@ -37,9 +37,10 @@ export default function About() {
         {/* RIGHT IMAGE */}
         <div className="about-image-frame">
           <img
-            src="./logo.png"
-            alt="LeoNova Toys"
-          />
+  src="./logo.png"
+  alt="LeoNova Logo"
+  className="about-logo"
+/>
         </div>
       </div>
 
