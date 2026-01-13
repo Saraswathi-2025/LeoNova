@@ -1,16 +1,55 @@
-# React + Vite
+# LeoNova 🧸  
+React E-commerce Web Application (Frontend Focused)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🔗 Live Demo  
+https://saraswathi-2025.github.io/LeoNova/
 
-Currently, two official plugins are available:
+## 📌 About the Project  
+LeoNova is a frontend-focused e-commerce web application built using React.  
+The project simulates an online toy store where users can browse products, view details, add items to cart, and proceed to checkout (demo flow).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project was built as part of my learning journey in frontend web development, focusing on React component structure, UI design, and user interaction.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Features
+- Product listing page  
+- Product details page  
+- Add to cart & remove from cart  
+- Cart summary  
+- Responsive UI (mobile & desktop)  
+- Reusable React components  
 
-## Expanding the ESLint configuration
+⚠️ Note: This is Version 1. Backend features like real payments and database persistence are not implemented yet.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+- React  
+- JavaScript (ES6)  
+- HTML5  
+- CSS3  
+- Git & GitHub  
+- GitHub Pages (Deployment)
+
+---
+
+## 📂 Project Status
+🟡 In Progress / Learning Project
+
+- Frontend UI and logic are implemented  
+- Backend integration planned for future versions  
+- Code will be refactored and improved as learning continues  
+
+---
+
+## 🧠 What I Learned
+- Building component-based UI using React  
+- Managing state and props  
+- Handling user interactions (cart logic)  
+- Structuring a real-world frontend project  
+- Deploying React apps using GitHub Pages  
+
+---
+
+## ▶️ How to Run Locally
