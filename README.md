@@ -53,3 +53,17 @@ This project was built as part of my learning journey in frontend web developmen
 ---
 
 ## ▶️ How to Run Locally
+git clone https://github.com/saraswathi-2025/LeoNova.git
+
+cd LeoNova
+npm install
+npm start
+
+---
+
+## 👤 Author
+Saraswathi  
+Frontend Web Developer (Learning)
+
+GitHub: https://github.com/saraswathi-2025
+
